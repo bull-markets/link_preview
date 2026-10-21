@@ -6,7 +6,7 @@ defmodule LinkPreview.Requests do
 
   adapter Tesla.Adapter.Finch, name: LinkPreview.Finch, body_format: :binary
   plug Tesla.Middleware.BaseUrl, "http://"
-  plug Tesla.Middleware.DecompressResponse
+  plug Tesla.Middleware.DecompressResponse, max_body_size: 32 * 1024 * 1024
   plug Tesla.Middleware.FollowRedirects
 
   @doc """
